@@ -11,7 +11,7 @@ public interface ResourceIdentifier<T extends @NotNull ResourceProducer> {
 
     @NotNull StringIdentifier<@NotNull LanguageGlyphCollection> MINECRAFT_FONT = StringIdentifier.of("minecraft_font", LanguageGlyphCollection.class);
 
-    String STRING_IDENTIFIER_NAMESPACE = "glyphs";
+    String STRING_IDENTIFIER_NAMESPACE = "guis";
 
     @NotNull String key();
 

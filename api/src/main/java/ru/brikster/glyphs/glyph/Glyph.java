@@ -7,7 +7,7 @@ import ru.brikster.glyphs.glyph.exception.ResourceNotProducedException;
 
 public interface Glyph {
 
-    String DEFAULT_NAMESPACE = "glyphs";
+    String DEFAULT_NAMESPACE = "guis";
 
     @Deprecated(forRemoval = true)
     Key DEFAULT_FONT_KEY = Key.key(DEFAULT_NAMESPACE, "default");
