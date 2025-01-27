@@ -1,8 +1,2 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        maven { url "https://repo.papermc.io/repository/maven-public/" }
-    }
-}
-include("api", "resources", "example-bukkit")
+include("api", "resources")
 rootProject.name = "glyphs"

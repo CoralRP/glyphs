@@ -1,6 +1,32 @@
 plugins {
-    id "glyphs.common"
-    id "glyphs.publish"
+    id 'maven-publish'
+}
+
+tasks.register('sourceJar', Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = "sources"
+}
+
+publishing {
+    publications {
+        library(MavenPublication) {
+            from components.java
+            artifact sourceJar
+        }
+    }
+
+    repositories {
+        maven {
+            url "https://repo.coralmc.it/releases"
+            credentials {
+                username "$mavenUser"
+                password "$mavenPassword"
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
 }
 
 dependencies {

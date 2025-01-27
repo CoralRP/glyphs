@@ -1,8 +1,60 @@
 plugins {
-    id "glyphs.publish"
+    id 'java'
 }
 
-allprojects {
-    group = "ru.brikster"
-    version = "$version"
+subprojects {
+    apply plugin: 'java'
+
+    group 'it.coralrp.laroc.glyphs'
+    version '1.0.0-SNAPSHOT'
+
+    java {
+        // Configure the java toolchain. This allows gradle to auto-provision JDK 17 on systems that only have JDK 8 installed for example.
+        toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+    }
+
+    tasks {
+        compileJava {
+            options.encoding = 'UTF-8' // We want UTF-8 for everything
+
+            // Set the release flag. This configures what version bytecode the compiler will emit, as well as what JDK APIs are usable.
+            // See https://openjdk.java.net/jeps/247 for more information.
+            options.release.set(21)
+        }
+
+        javadoc {
+            options.encoding = 'UTF-8' // We want UTF-8 for everything
+        }
+
+        processResources {
+            filteringCharset = 'UTF-8' // We want UTF-8 for everything
+        }
+    }
+
+    repositories {
+
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url "https://repo.papermc.io/repository/maven-public/" }
+
+        maven {
+            url("https://repo.coralmc.it/releases")
+            credentials {
+                username "$mavenUser"
+                password "$mavenPassword"
+            }
+
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+
+    dependencies {
+        implementation 'org.jetbrains:annotations:16.0.2'
+        implementation "ru.brikster:creative-api:0.4.1"
+        implementation "net.kyori:adventure-api:4.11.0"
+        compileOnly "org.projectlombok:lombok:1.18.30"
+        annotationProcessor "org.projectlombok:lombok:1.18.30"
+    }
 }
