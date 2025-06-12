@@ -38,7 +38,7 @@ subprojects {
         maven { url "https://repo.papermc.io/repository/maven-public/" }
 
         maven {
-            url("https://repo.coralmc.it/releases")
+            url("https://repo.atlantisrp.it/releases")
             credentials {
                 username "$mavenUser"
                 password "$mavenPassword"

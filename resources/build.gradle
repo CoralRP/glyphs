@@ -17,7 +17,7 @@ publishing {
 
     repositories {
         maven {
-            url "https://repo.coralmc.it/releases"
+            url "https://repo.atlantisrp.it/releases"
             credentials {
                 username "$mavenUser"
                 password "$mavenPassword"
